@@ -8,8 +8,7 @@ O projeto opera de forma autônoma sem dependência de banco de dados externo ou
 
 ## Identificação do Projeto & Autoria
 
-- **Aluno:** *Eduardo Vedana Danielli
-*
+- **Aluno:** *Eduardo Vedana Danielli*
 - **Disciplina:** Desenvolvimento Web / Frameworks Frontend (Angular)
 - **Curso:** Ciência da Computação / Análise e Desenvolvimento de Sistemas / Engenharia de Software
 - **Ano Letivo:** 2026
