@@ -1,0 +1,144 @@
+<div class="cadastro-section">
+  <h2><strong>CADASTRO DE NOVO JOGO</strong></h2>
+  <p class="section-intro">
+    Preencha os campos abaixo para incluir um novo título diretamente no serviço em memória da plataforma.
+  </p>
+
+  @if (mensagemSucesso) {
+    <div class="alerta-sucesso">
+      <strong>Confirmação:</strong> {{ mensagemSucesso }}
+    </div>
+  }
+
+  <form class="testimonial-form" (ngSubmit)="salvarJogo()" novalidate>
+    <h3>FORMULÁRIO DE INCLUSÃO</h3>
+
+    <div class="form-row">
+      <!-- Campo Nome -->
+      <div class="form-field">
+        <label for="nome">NOME DO JOGO: *</label>
+        <input 
+          id="nome" 
+          name="nome"
+          type="text" 
+          placeholder="Ex: Half-Life 2"
+          [(ngModel)]="novoJogo.nome" 
+          required 
+        />
+        @if (formularioSubmetido && !nomeValido) {
+          <span class="error-msg">O nome do jogo é de preenchimento obrigatório.</span>
+        }
+      </div>
+
+      <!-- Campo Categoria -->
+      <div class="form-field">
+        <label for="categoria">CATEGORIA: *</label>
+        <select 
+          id="categoria" 
+          name="categoria"
+          [(ngModel)]="novoJogo.categoria" 
+          required>
+          @for (cat of categoriasDisponiveis; track cat) {
+            <option [value]="cat">{{ cat }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <!-- Campo Preço -->
+      <div class="form-field">
+        <label for="preco">PREÇO (R$): * (Informe 0 para Gratuito)</label>
+        <input 
+          id="preco" 
+          name="preco"
+          type="number" 
+          step="0.01" 
+          min="0"
+          [(ngModel)]="novoJogo.preco" 
+          required 
+        />
+        @if (formularioSubmetido && !precoValido) {
+          <span class="error-msg">O valor do preço não pode ser negativo.</span>
+        }
+      </div>
+
+      <!-- Campo Avaliação -->
+      <div class="form-field">
+        <label for="avaliacao">AVALIAÇÃO (0.0 A 5.0): *</label>
+        <input 
+          id="avaliacao" 
+          name="avaliacao"
+          type="number" 
+          step="0.1" 
+          min="0" 
+          max="5"
+          [(ngModel)]="novoJogo.avaliacao" 
+          required 
+        />
+        @if (formularioSubmetido && !avaliacaoValida) {
+          <span class="error-msg">A nota de avaliação deve estar entre 0.0 e 5.0.</span>
+        }
+      </div>
+    </div>
+
+    <!-- Campo Descrição -->
+    <div class="form-group">
+      <label for="descricao" class="form-label">DESCRIÇÃO DETALHADA DO JOGO:</label>
+      <textarea 
+        id="descricao" 
+        name="descricao"
+        rows="4" 
+        placeholder="Informe uma sinopse ou resumo das mecânicas do jogo..."
+        [(ngModel)]="novoJogo.descricao">
+      </textarea>
+    </div>
+
+    <!-- Campo Imagem URL -->
+    <div class="form-group">
+      <label for="imagem" class="form-label">URL DA IMAGEM: *</label>
+      <input 
+        id="imagem" 
+        name="imagem"
+        type="url" 
+        class="form-input-full"
+        placeholder="https://..."
+        [(ngModel)]="novoJogo.imagem" 
+        required 
+      />
+      @if (novoJogo.imagem) {
+        <div class="preview-area">
+          <span>Prévia da imagem informada:</span>
+          <img [src]="novoJogo.imagem" alt="Prévia da capa" class="preview-thumb" (error)="aoFalharImagem($event)" />
+        </div>
+      }
+    </div>
+
+    <!-- Campo Disponibilidade -->
+    <div class="form-group">
+      <label class="form-label">SITUAÇÃO DE DISPONIBILIDADE:</label>
+      <div class="checkbox-line">
+        <input 
+          type="checkbox" 
+          id="disponivel"
+          name="disponivel"
+          [(ngModel)]="novoJogo.disponivel" 
+        />
+        <label for="disponivel">Marcar como item disponível em estoque para jogadores</label>
+      </div>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="form-buttons">
+      <button 
+        type="submit" 
+        class="btn-save"
+        [disabled]="formularioSubmetido && !formularioValido">
+        SALVAR JOGO
+      </button>
+      <a routerLink="/jogos" class="btn-cancel">
+        CANCELAR
+      </a>
+    </div>
+  </form>
+</div>

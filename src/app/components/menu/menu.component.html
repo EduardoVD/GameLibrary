@@ -1,0 +1,32 @@
+<header id="top" class="header-peek">
+  <h1>GAMEHUB</h1>
+  
+  <div class="header-actions">
+    <nav class="menu-navigation">
+      <a 
+        routerLink="/" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{ exact: true }">
+        ÁREA PRINCIPAL
+      </a>
+      <a 
+        routerLink="/jogos" 
+        routerLinkActive="active">
+        CATÁLOGO
+      </a>
+      <a 
+        routerLink="/cadastrar" 
+        routerLinkActive="active">
+        CADASTRAR JOGO
+      </a>
+    </nav>
+
+    <span class="nav-divider" aria-hidden="true"></span>
+
+    <div class="auth-section">
+      <div class="jogos-badge" title="Total de jogos cadastrados no sistema">
+        TOTAL: <strong>{{ totalJogos }}</strong>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,62 @@
+<div class="main-home">
+  <!-- Seção de Apresentação -->
+  <section class="main-section">
+    <h2><strong>BEM-VINDO AO GAMEHUB</strong></h2>
+    <p>
+      O seu ponto de encontro definitivo com o universo dos jogos. Reúna seus títulos favoritos, acompanhe estatísticas, descubra novos lançamentos e conecte-se com outros jogadores em uma interface rápida, moderna e feita para quem leva o gameplay a sério.
+    </p>
+    <p>
+      Nossa missão é fornecer uma experiência simplificada e direta para jogadores e entusiastas que desejam consultar fichas técnicas, verificar disponibilidade de estoque, pesquisar preços e incluir novos títulos no acervo de maneira rápida e organizada.
+    </p>
+  </section>
+
+  <hr class="main-divider" />
+
+  <!-- Indicadores Dinâmicos do Service -->
+  <section class="main-section">
+    <h2><strong>INDICADORES DO ACERVO</strong></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>TOTAL DE JOGOS</h3>
+        <p class="service-number">{{ totalJogos }}</p>
+        <p class="service-desc">Jogos cadastrados e catalogados.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>JOGOS GRATUITOS</h3>
+        <p class="service-number">{{ totalGratuitos }}</p>
+        <p class="service-desc">Títulos com custo zero disponíveis para todos os usuários.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>GÊNEROS & CATEGORIAS</h3>
+        <p class="service-number">{{ totalCategorias }}</p>
+        <p class="service-desc">Categorias distintas para organização e filtragem.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="main-divider" />
+
+  <!-- Jogos em Destaque -->
+  <section class="main-section">
+    <div class="destaques-header">
+      <h2><strong>JOGOS EM DESTAQUE</strong></h2>
+      <a routerLink="/jogos" class="btn-link">Ver catálogo completo ({{ totalJogos }}) &rarr;</a>
+    </div>
+
+    <div class="device-grid">
+      @for (jogo of jogosDestaque; track jogo.id) {
+        <app-jogo-card [jogo]="jogo"></app-jogo-card>
+      }
+    </div>
+  </section>
+
+  <hr class="main-divider" />
+
+  <!-- Ações Rápidas -->
+  <div class="home-actions">
+    <a routerLink="/jogos" class="card-button">ACESSAR CATÁLOGO COMPLETO</a>
+    <a routerLink="/cadastrar" class="card-button">CADASTRAR NOVO JOGO</a>
+  </div>
+</div>

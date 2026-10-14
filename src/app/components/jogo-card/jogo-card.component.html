@@ -1,0 +1,62 @@
+<article class="card">
+  <!-- Imagem com Property Binding, borda 4px e sombra preta -->
+  <img [src]="jogo.imagem" [alt]="jogo.nome" class="device-photo" (error)="aoFalharImagem($event)" />
+
+  <div class="card-info">
+    <div class="card-tags">
+      <!-- @switch para identificação da categoria sem emojis -->
+      @switch (jogo.categoria) {
+        @case ('RPG') {
+          <span class="categoria-tag">CATEGORIA: RPG</span>
+        }
+        @case ('Ação') {
+          <span class="categoria-tag">CATEGORIA: AÇÃO</span>
+        }
+        @case ('Aventura') {
+          <span class="categoria-tag">CATEGORIA: AVENTURA</span>
+        }
+        @case ('Estratégia') {
+          <span class="categoria-tag">CATEGORIA: ESTRATÉGIA</span>
+        }
+        @case ('Corrida') {
+          <span class="categoria-tag">CATEGORIA: CORRIDA</span>
+        }
+        @default {
+          <span class="categoria-tag">CATEGORIA: {{ jogo.categoria }}</span>
+        }
+      }
+
+      <!-- @if / @else para disponibilidade do produto -->
+      @if (jogo.disponivel) {
+        <span class="status-tag status-disponivel">EM ESTOQUE</span>
+      } @else {
+        <span class="status-tag status-indisponivel">INDISPONÍVEL</span>
+      }
+    </div>
+
+    <!-- Título e descrição do jogo com Interpolação -->
+    <h3 class="device-title">{{ jogo.nome }}</h3>
+    <p class="device-description">{{ jogo.descricao }}</p>
+
+    <div class="card-meta">
+      <div class="meta-item">
+        <strong>Preço:</strong>
+        @if (jogo.preco === 0) {
+          <span class="preco-gratis">GRÁTIS</span>
+        } @else {
+          <span class="preco-valor">{{ jogo.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+        }
+      </div>
+
+      <div class="meta-item">
+        <strong>Avaliação:</strong>
+        <span>{{ jogo.avaliacao }} / 5.0</span>
+      </div>
+    </div>
+
+    <!-- Botão de ação com routerLink -->
+    <a [routerLink]="['/jogos', jogo.id]" class="card-button">
+      VERIFICAR DETALHES DO JOGO
+    </a>
+  </div>
+</article>

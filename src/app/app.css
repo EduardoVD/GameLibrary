@@ -1,0 +1,165 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.footer {
+  font-family: Cambria, Georgia, serif;
+  color: #ffffff;
+  background-color: #0080ff;
+  padding: 32px 24px 20px;
+  margin-top: 24px;
+  border: 4px solid #000000;
+  border-radius: 12px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.footer-brand .brand-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.footer-brand h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.brand-badge {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.brand-desc {
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.retro-stamp {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px #000000;
+  letter-spacing: 0.5px;
+}
+
+.footer-nav-col h3,
+.footer-contact-col h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 6px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  transform: translateX(4px);
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-list strong {
+  font-size: 0.95rem;
+}
+
+.contact-list span {
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px dashed #ffffff;
+  padding-top: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.btn-top {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px #000000;
+  cursor: pointer;
+}
+
+.btn-top:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+}

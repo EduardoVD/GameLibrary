@@ -1,0 +1,99 @@
+<div class="detalhes-section">
+  <div class="detalhes-header">
+    <h2><strong>DETALHES DO JOGO</strong></h2>
+    <a routerLink="/jogos" class="card-button-small">&larr; VOLTAR AO CATÁLOGO</a>
+  </div>
+
+  @if (jogo) {
+    <div class="detalhes-card">
+      <div class="detalhes-media">
+        <!-- Property Binding de imagem -->
+        <img [src]="jogo.imagem" [alt]="jogo.nome" class="device-photo-large" (error)="aoFalharImagem($event)" />
+      </div>
+
+      <div class="detalhes-info-box">
+        <div class="info-header">
+          <span class="id-tag">ID: #{{ jogo.id }}</span>
+          
+          <!-- @switch na categoria do jogo -->
+          @switch (jogo.categoria) {
+            @case ('RPG') {
+              <span class="categoria-tag">CATEGORIA: RPG</span>
+            }
+            @case ('Ação') {
+              <span class="categoria-tag">CATEGORIA: AÇÃO</span>
+            }
+            @case ('Aventura') {
+              <span class="categoria-tag">CATEGORIA: AVENTURA</span>
+            }
+            @case ('Estratégia') {
+              <span class="categoria-tag">CATEGORIA: ESTRATÉGIA</span>
+            }
+            @case ('Corrida') {
+              <span class="categoria-tag">CATEGORIA: CORRIDA</span>
+            }
+            @default {
+              <span class="categoria-tag">CATEGORIA: {{ jogo.categoria }}</span>
+            }
+          }
+
+          <!-- @if / @else para disponibilidade -->
+          @if (jogo.disponivel) {
+            <span class="status-tag status-disponivel">EM ESTOQUE</span>
+          } @else {
+            <span class="status-tag status-indisponivel">INDISPONÍVEL</span>
+          }
+        </div>
+
+        <h1 class="detalhes-titulo">{{ jogo.nome }}</h1>
+        <p class="detalhes-descricao">{{ jogo.descricao }}</p>
+
+        <hr class="box-divider" />
+
+        <ul class="specs-list">
+          <li>
+            <strong>Preço Oficial:</strong>
+            @if (jogo.preco === 0) {
+              <span class="preco-gratis">Gratuito (Free-to-Play)</span>
+            } @else {
+              <span>{{ jogo.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+            }
+          </li>
+          <li>
+            <strong>Avaliação dos Usuários:</strong>
+            <span>{{ jogo.avaliacao }} / 5.0</span>
+          </li>
+          <li>
+            <strong>Gênero / Categoria:</strong>
+            <span>{{ jogo.categoria }}</span>
+          </li>
+          <li>
+            <strong>Situação no Sistema:</strong>
+            @if (jogo.disponivel) {
+              <span class="text-green">Disponível para aquisição imediata</span>
+            } @else {
+              <span class="text-red">Indisponível no momento</span>
+            }
+          </li>
+        </ul>
+
+        <div class="detalhes-actions">
+          <a routerLink="/jogos" class="card-button">
+            &larr; RETORNAR AO CATÁLOGO
+          </a>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <!-- Caso o ID não exista ou seja inválido -->
+    <div class="erro-box">
+      <h3>Jogo não encontrado</h3>
+      <p>
+        O identificador <strong>#{{ idParametro }}</strong> não corresponde a nenhum título catalogado no sistema.
+      </p>
+      <a routerLink="/jogos" class="card-button">
+        RETORNAR AO CATÁLOGO DE JOGOS
+      </a>
+    </div>
+  }
+</div>

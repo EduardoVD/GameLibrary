@@ -1,0 +1,76 @@
+<section class="article">
+  <div class="catalogo-header">
+    <h2><strong>CATÁLOGO DE JOGOS</strong></h2>
+    <a routerLink="/cadastrar" class="card-button-small">+ CADASTRAR JOGO</a>
+  </div>
+
+  <!-- Painel de Filtros e Busca Estilo Formulário Retrô -->
+  <div class="filtros-box">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="busca-nome">PESQUISAR POR NOME:</label>
+        <input 
+          id="busca-nome"
+          type="text" 
+          placeholder="Digite o título do jogo..." 
+          [(ngModel)]="termoBusca"
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="select-categoria">FILTRAR POR CATEGORIA:</label>
+        <select 
+          id="select-categoria"
+          [(ngModel)]="categoriaSelecionada">
+          @for (cat of categorias; track cat) {
+            <option [value]="cat">{{ cat }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <!-- Pílulas de seleção rápida de categoria estilo rádio -->
+    <div class="radio-options">
+      <span class="options-label">SELEÇÃO RÁPIDA:</span>
+      @for (cat of categorias; track cat) {
+        <button 
+          type="button" 
+          class="btn-pill" 
+          [class.pill-active]="categoriaSelecionada === cat"
+          (click)="selecionarCategoria(cat)">
+          {{ cat }}
+        </button>
+      }
+
+      @if (termoBusca || categoriaSelecionada !== 'Todas') {
+        <button type="button" class="btn-clear" (click)="limparFiltros()">
+          LIMPAR FILTROS
+        </button>
+      }
+    </div>
+
+    <div class="status-resultados">
+      Total de títulos encontrados: <strong>{{ jogosFiltrados.length }}</strong>
+    </div>
+  </div>
+
+  <hr class="main-divider" />
+
+  <!-- Listagem de Jogos -->
+  <div class="device-grid">
+    @if (jogosFiltrados.length > 0) {
+      @for (jogo of jogosFiltrados; track jogo.id) {
+        <app-jogo-card [jogo]="jogo"></app-jogo-card>
+      }
+    } @else {
+      <!-- Mensagem quando não houver resultados com @if -->
+      <div class="empty-box">
+        <h3>Nenhum jogo encontrado</h3>
+        <p>Não há nenhum jogo cadastrado que atenda aos critérios da pesquisa atual.</p>
+        <button type="button" class="card-button" (click)="limparFiltros()">
+          RESTAURAR VISUALIZAÇÃO COMPLETA
+        </button>
+      </div>
+    }
+  </div>
+</section>

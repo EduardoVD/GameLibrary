@@ -1,0 +1,59 @@
+<div class="app-layout">
+  <!-- Menu de Navegação Global -->
+  <app-menu></app-menu>
+
+  <!-- Ponto de Renderização das Rotas (Router Outlet) -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Rodapé Estilo Telefonia Retrô / Simples -->
+  <footer id="footer" class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="brand-title">
+          <h2>GAMEHUB</h2>
+          <span class="brand-badge">Est. 2026</span>
+        </div>
+        <p class="brand-desc">
+          Plataforma de catálogo de jogos desenvolvida em Angular com dados centralizados em Service em memória.
+        </p>
+        <div class="retro-stamp">Catálogo Oficial de Jogos</div>
+      </div>
+
+      <div class="footer-nav-col">
+        <h3>NAVEGAÇÃO</h3>
+        <ul class="footer-links">
+          <li><a routerLink="/">▸ Página Inicial</a></li>
+          <li><a routerLink="/jogos">▸ Catálogo de Jogos</a></li>
+          <li><a routerLink="/cadastrar">▸ Cadastrar Novo Jogo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact-col">
+        <h3>INFORMAÇÕES</h3>
+        <ul class="contact-list">
+          <li>
+            <strong>Disciplina:</strong>
+            <span>Desenvolvimento Web / Angular</span>
+          </li>
+          <li>
+            <strong>Ambiente:</strong>
+            <span>Single Page Application (SPA)</span>
+          </li>
+          <li>
+            <strong>Arquitetura:</strong>
+            <span>Standalone Components & Services</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2026 GameHub. Todos os direitos reservados.
+      </p>
+      <a href="#top" class="btn-top">Voltar ao topo!</a>
+    </div>
+  </footer>
+</div>

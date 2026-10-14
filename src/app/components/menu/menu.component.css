@@ -1,0 +1,102 @@
+.header-peek {
+  font-family: Cambria, Georgia, serif;
+  color: #ffffff;
+  background-color: #0080ff;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  border: 4px solid #000000;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-peek h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.menu-navigation a {
+  font-family: Cambria, Georgia, serif;
+  color: #ffffff;
+  margin-right: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.menu-navigation a:hover {
+  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
+.menu-navigation a.active {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 4px 10px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.menu-navigation a:last-child {
+  margin-right: 0;
+}
+
+.nav-divider {
+  width: 2px;
+  height: 24px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+.auth-section {
+  display: flex;
+  align-items: center;
+}
+
+.jogos-badge {
+  font-family: Cambria, Georgia, serif;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #000000;
+  background-color: #ffffff;
+  padding: 8px 18px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.jogos-badge strong {
+  color: #0080ff;
+}
+
+@media (max-width: 768px) {
+  .header-peek {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .nav-divider {
+    display: none;
+  }
+}
